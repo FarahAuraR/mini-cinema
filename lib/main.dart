@@ -1,4 +1,4 @@
-import 'package:mini_cinema/menu.dart';
+import 'package:mini_cinema/screens/menu.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 182, 82, 82)),
         useMaterial3: true,
       ),
       home: MyHomePage()
