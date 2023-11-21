@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mini_cinema/screens/list_item.dart';
 import 'package:mini_cinema/screens/menu.dart';
 import 'package:mini_cinema/screens/minicinema_form.dart';
-import 'package:mini_cinema/screens/minicinema_show.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -65,16 +65,15 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.add_shopping_cart),
-            title: const Text('Show Item'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ShowItem(),
-                )
-              );
-            },
+              leading: const Icon(Icons.shopping_basket),
+              title: const Text('Show Item'),
+              onTap: () {
+                  // Route menu ke halaman produk
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ItemPage()),
+                  );
+              },
           ),
         ],
       ),
