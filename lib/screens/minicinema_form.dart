@@ -18,6 +18,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _name = "";
   int _amount = 0;
+  int _price = 0;
   String _description = "";
 
     @override
@@ -96,6 +97,33 @@ class _ShopFormPageState extends State<ShopFormPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     decoration: InputDecoration(
+                      hintText: "Price",
+                      labelText: "Price",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    // TODO: Tambahkan variabel yang sesuai
+                    onChanged: (String? value) {
+                      setState(() {
+                        _price = int.parse(value!);
+                      });
+                    },
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Price cannot be empty!";
+                      }
+                      if (int.tryParse(value) == null) {
+                        return "Price must be number!";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
                       hintText: "Description",
                       labelText: "Description",
                       border: OutlineInputBorder(
@@ -131,9 +159,11 @@ class _ShopFormPageState extends State<ShopFormPage> {
                               // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
                               final response = await request.postJson(
                               "https://farah-aura-tugas.pbp.cs.ui.ac.id/create-flutter/",
+                              // "http://127.0.0.1:8000/create-flutter/",
                               jsonEncode(<String, String>{
                                   'name': _name,
                                   'amount': _amount.toString(),
+                                  'price': _price.toString(),
                                   'description': _description,
                                   // TODO: Sesuaikan field data sesuai dengan aplikasimu
                               }));
