@@ -654,3 +654,526 @@ if (item.name == "Show Item") {
 
 </details>
 
+
+<details>
+<summary>TUGAS 9</summary>
+
+<h1>Perbedaan Navigator.push() dan Navigator.pushReplacement() beserta Contoh</h1>
+Perbedaan utama antara Navigator.push() dan Navigator.pushReplacement() terletak pada pengelolaan stack route yang dikelola oleh Navigator dalam Flutter. `Navigator.push()` menambahkan suatu route ke dalam stack route yang dikelola oleh Navigator. Route yang ditambahkan akan berada di atas stack, sehingga menjadi route yang sedang ditampilkan kepada pengguna. Stack akan terus bertambah seiring pengguna menavigasi ke route baru. Sementara, `Navigator.pushReplacement()` menghapus route yang sedang ditampilkan kepada pengguna dan menggantinya dengan suatu route baru. Aplikasi berpindah dari route yang sedang ditampilkan ke route yang diberikan. Route lama pada atas stack digantikan secara langsung oleh route baru tanpa mengubah kondisi elemen stack yang berada di bawahnya.
+
+Contoh penggunaan bergantung pada kebutuhan aplikasi dan alur navigasi yang diinginkan.
+Contoh `Navigator.push()` :
+```java
+    if (item.name == "Add Item") {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const ShopFormPage()));
+    }
+```
+Contoh `Navigator.pushReplacement()` :
+```java
+    onTap: () {
+        Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => MyHomePage(),
+        ));
+    },
+```
+
+<h1>Layout Widget pada Flutter dan Konteks Penggunaannya</h1>
+  * Single-child layout widgets
+- Align : Mengatur posisi dan ukuran child dalam parent widget, cocok untuk menempatkan widget dengan parameter seperti alignment.
+- Center : Memusatkan child di tengah parent widget, digunakan untuk memusatkan widget child.
+- Container : Menyatukan widget-widget untuk penempatan dan penentuan ukuran, ideal untuk mengelola ukuran, dekorasi, dan penataan widget.
+- Padding : Menambahkan jarak tepi pada child sesuai dengan padding yang diberikan, berguna untuk memberikan ruang kosong di sekitar child widget.
+- Baseline : Menempatkan child berdasarkan garis dasar (baseline) dari child tersebut, berguna untuk mengatur posisi elemen berdasarkan baseline.
+
+  * Multi-child layout widgets
+- Column : Menyusun daftar child widget secara vertikal, digunakan untuk menyusun widget dalam kolom.
+- Row : Menyusun daftar child widget secara horizontal, berguna untuk menyusun widget dalam baris.
+= Stack : Menumpuk beberapa child di atas satu sama lain, digunakan untuk menata widget secara tumpukan.
+- ListView : Daftar linier yang dapat di-scroll, ideal untuk menampilkan daftar item panjang.
+- Table : Menampilkan widget dalam bentuk baris dan kolom, berguna untuk menyusun widget dalam tata letak tabel.
+
+  * Sliver widgets
+- CupertinoSliverNavigationBar : Navigation bar gaya iOS dengan judul besar, digunakan untuk membuat navigation bar iOS khusus.
+- CustomScrollView : ScrollView dengan efek scroll kustom, ideal untuk menciptakan efek scroll yang disesuaikan dan kompleks.
+- SliverAppBar : App bar desain material yang terintegrasi dengan CustomScrollView, digunakan untuk membuat app bar berinteraksi dengan efek scroll kustom.
+
+<h1>Elemen Input pada Form yang dipakai pada Tugas 7</h1>
+Pada tugas ini, saya menggunakan elemen input berupa `TextFormField` untuk nama item (String), jumlah (int), dan deskripsi (String). Setiap elemen input memiliki fungsi onChanged untuk meng-update variabel terkait saat terjadi perubahan, serta validator untuk memastikan input tidak kosong dan sesuai dengan format yang diinginkan. Selain itu, saya juga menggunakan widget `Form`  sebagai wadah bagi beberapa input field widget.
+
+<h1>Penerapan clean architecture pada aplikasi Flutter</h1>
+Penerapan Clean Architecture pada aplikasi Flutter melibatkan organisasi proyek menjadi beberapa modul yang sesuai dengan prinsip Clean Architecture. Berikut adalah langkah-langkah umum untuk menerapkan Clean Architecture pada aplikasi Flutter :
+- Modularisasi : Membagi proyek menjadi modul terpisah untuk Lapisan Data, Lapisan Presentasi, dan Lapisan Domain guna mempermudah pemeliharaan dan pengembangan.
+- Lapisan Data : Implementasikan sumber data dan gunakan pola Repository untuk mengelola akses data tanpa ketergantungan pada lapisan presentasi atau domain.
+- Lapisan Domain : Definisikan entities dan use cases yang mencakup logika bisnis inti aplikasi, tanpa tergantung pada lapisan presentasi atau data.
+- Lapisan Presentasi : Terapkan state management dan UI di lapisan presentasi, yang hanya bergantung pada lapisan domain untuk menjembatani antara UI dan logika bisnis.
+- Dependency Injection : Gunakan Dependency Injection untuk mengelola ketergantungan antar modul dan menyediakan fleksibilitas dalam penggantian implementasi.
+- Unit Test : Implementasikan unit test untuk setiap use case di lapisan domain untuk memastikan kestabilan dan kebenaran logika bisnis.
+- Integrasi dengan Framework: Hubungkan lapisan presentasi dengan Flutter, fokus pada tampilan dan interaksi pengguna, tanpa mencampuradukkan logika bisnis.
+- Penggunaan Libraries: Pertimbangkan penggunaan library eksternal yang mendukung prinsip Clean Architecture, seperti Dio untuk akses HTTP atau Moor untuk database lokal, untuk memperkuat implementasi tanpa mengorbankan struktur modular.
+
+<h1>Step-by-Step Mengimplementasikan Tugas</h1>
+<h2></h2>
+
+ Membuat minimal satu halaman baru pada aplikasi, yaitu halaman formulir tambah item baru dengan ketentuan sebagai berikut:
+ Memakai minimal tiga elemen input, yaitu name, amount, description. Tambahkan elemen input sesuai dengan model pada aplikasi tugas Django yang telah kamu buat.
+ Memiliki sebuah tombol Save.
+ Setiap elemen input di formulir juga harus divalidasi dengan ketentuan sebagai berikut:
+ Setiap elemen input tidak boleh kosong.
+ Setiap elemen input harus berisi data dengan tipe data atribut modelnya.
+ Mengarahkan pengguna ke halaman form tambah item baru ketika menekan tombol Tambah Item pada halaman utama.
+ Memunculkan data sesuai isi dari formulir yang diisi dalam sebuah pop-up setelah menekan tombol Save pada halaman formulir tambah item baru.
+ Membuat sebuah drawer pada aplikasi dengan ketentuan sebagai berikut:
+ Drawer minimal memiliki dua buah opsi, yaitu Halaman Utama dan Tambah Item.
+ Ketika memiih opsi Halaman Utama, maka aplikasi akan mengarahkan pengguna ke halaman utama.
+ Ketika memiih opsi (Tambah Item), maka aplikasi akan mengarahkan pengguna ke halaman form tambah item baru.
+</details>
+
+
+<details>
+<summary>TUGAS 8</summary>
+
+<h1>Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?</h1>
+Iya, kita bisa melakukan pengambilan data JSON tanpa membuat model terlebih dahulu, hal ini disebut dynamic parsing. Namun, membuat model sebelumnya memberikan keamanan tipe, meningkatkan pemahaman, dan memudahkan pemeliharaan kode, sementara parsing dinamis bisa lebih fleksibel tetapi rentan terhadap kesalahan dan sulit dipelihara pada proyek yang berkembang.
+
+<h1>Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter</h1>
+CookieRequest merupakan sebuah kelas dalam Flutter yang berperan dalam manajemen cookies dalam aplikasi. Fungsinya mencakup penyimpanan dan pengambilan cookies yang digunakan dalam interaksi dengan server web. Penting untuk berbagi instance CookieRequest ke semua komponen dalam aplikasi Flutter karena cookies sering digunakan untuk keperluan otentikasi pengguna, pelacakan sesi, dan penyimpanan preferensi pengguna. Dengan menggunakan instance yang sama, dapat dipastikan bahwa setiap komponen dalam aplikasi memiliki akses yang konsisten ke informasi cookies.
+
+<h1>Mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter</h1>
+
+  * Ambil Data dari Sumber Eksternal: Dapatkan data JSON, biasanya dari API web, menggunakan metode HTTP GET atau POST.
+  * Parsel JSON: Parse data JSON menjadi objek atau struktur data yang dapat digunakan oleh Flutter. Fungsi jsonDecode() dari paket dart:convert dapat digunakan untuk ini.
+  * Gunakan Data untuk Membangun Widget: Gunakan objek atau struktur data yang telah di-parse untuk membangun widget Flutter, seperti ListView, Card, atau widget kustom, yang kemudian ditampilkan kepada pengguna.
+
+<h1>Mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter</h1>
+
+  * Formulir di Flutter: Buat formulir di Flutter untuk masukan akun pengguna.
+  * Kirim Data ke Django: Gunakan metode HTTP (biasanya POST) untuk mengirim data ke endpoint autentikasi Django.
+  * Autentikasi di Django: Implementasikan autentikasi di Django dan berikan respons, misalnya token akses.
+  * Respon ke Flutter: Tangani respons dari Django di Flutter, simpan token jika diperlukan.
+  * Navigasi ke Halaman Menu: Setelah autentikasi berhasil, navigasikan ke halaman menu di Flutter.
+
+<h1>Widget yang dipakai pada tugas 8 dan jelaskan fungsinya</h1>
+
+  * Scaffold: Kerangka dasar untuk tata letak berbasis material design.
+  * AppBar: Menampilkan judul dan tindakan di bagian atas.
+  * Padding: Memberikan jarak pada widget anak.
+  * Column: Menyusun anak-anak secara vertikal.
+  * Text: Menampilkan teks dengan konfigurasi tertentu.
+  * SizedBox: Memberikan ruang kosong dengan ukuran tertentu.
+  * FloatingActionButton: Tombol aksi mengambang di atas konten.
+  * Icon: Menampilkan ikon untuk representasi visual.
+  * Drawer: Panel yang dapat ditarik dari tepi layar.
+  * FutureBuilder: Membuat widget berdasarkan hasil Future.
+  * GestureDetector: Mendeteksi gestur pengguna.
+  * ListView.builder: Membuat daftar gulir efisien.
+  * MaterialPageRoute: Transisi antar halaman berbasis material design.
+  * Navigator: Mengelola tumpukan navigasi.
+  * Container: Kotak untuk menampung widget lainnya.
+
+<h1>Step-by-Step Mengimplementasikan Tugas</h1>
+<h2>Membuat halaman login pada proyek tugas Flutter dan Mengintegrasikan sistem autentikasi Django dengan proyek tugas Flutter</h2>
+
+Langkat pertama, yaitu saya membuat django-app bernama `authentication` pada project Django dengan menjalankan perintah `python3 manage.py startapp authentication` pada terminal. Lalu, saya juga menjalankan perintah `pip install django-cors-headers` untuk menginstal library yang dibutuhkan. Kemudian, saya menambahkan `authentication` dan `corsheaders` ke INSTALLED_APPS pada main project `settings.py` aplikasi Django. Saya juga menambahkan `corsheaders.middleware.CorsMiddleware` pada main project `settings.py` aplikasi Django dan menambahkan beberapa variabel berikut.
+
+```python
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'`
+```
+
+Langkah selanjutnya, saya membuka `authentication/views.py` dan membuat fungsi loginnya.
+```python
+from django.shortcuts import render
+from django.contrib.auth import authenticate, login as auth_login
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import logout as auth_logout
+
+@csrf_exempt
+def login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            auth_login(request, user)
+            # Status login sukses.
+            return JsonResponse({
+                "username": user.username,
+                "status": True,
+                "message": "Login sukses!"
+                # Tambahkan data lainnya jika ingin mengirim data ke Flutter.
+            }, status=200)
+        else:
+            return JsonResponse({
+                "status": False,
+                "message": "Login gagal, akun dinonaktifkan."
+            }, status=401)
+
+    else:
+        return JsonResponse({
+            "status": False,
+            "message": "Login gagal, periksa kembali email atau kata sandi."
+        }, status=401)
+```
+
+Selanjutnya, saya membuat file `urls.py` pada folder `authentication` dan menambahkan URL routing terhadap fungsi yang sudah dibuat dengan endpoint `login/` dan menambahkan `path('auth/', include('authentication.urls')),` pada file `mini_cinema/urls.py`.
+
+```python
+from django.urls import path
+from authentication.views import login
+
+app_name = 'authentication'
+
+urlpatterns = [
+    path('login/', login, name='login'),
+]
+```
+
+Untuk melakukan integrasi sistem autentikasi pada Flutter, saya menjalankan perintah `flutter pub add provider`
+`flutter pub add pbp_django_auth` pada terminal. Kemudian untuk menggunakan package tersebut, saya memodifikasi root widget untuk menyediakan CookieRequest library ke semua child widgets dengan menggunakan Provider. Hal ini akan membuat objek Provider baru yang akan membagikan instance CookieRequest dengan semua komponen yang ada di aplikasi. Jadi, saya mengubah main.dart menjadi seperti berikut.
+```dart
+class MyApp extends StatelessWidget {
+    const MyApp({Key? key}) : super(key: key);
+
+    @override
+    Widget build(BuildContext context) {
+        return Provider(
+            create: (_) {
+                CookieRequest request = CookieRequest();
+                return request;
+            },
+            child: MaterialApp(
+                title: 'Flutter App',
+                theme: ThemeData(
+                    colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 182, 82, 82)),
+                    useMaterial3: true,
+                ),
+                home: LoginPage()),
+        );
+    }
+}
+```
+
+Selanjutnya, saya membuat file baru pada folder screens dengan nama `login.dart` dan isi file tersebut dengan kode berikut.
+
+```dart
+import 'package:mini_cinema/screens/menu.dart';
+import 'package:flutter/material.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
+
+void main() {
+    runApp(const LoginApp());
+}
+
+class LoginApp extends StatelessWidget {
+const LoginApp({super.key});
+
+@override
+Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'Login',
+        theme: ThemeData(
+            primarySwatch: Colors.blue,
+    ),
+    home: const LoginPage(),
+    );
+    }
+}
+
+class LoginPage extends StatefulWidget {
+    const LoginPage({super.key});
+
+    @override
+    _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+    final TextEditingController _usernameController = TextEditingController();
+    final TextEditingController _passwordController = TextEditingController();
+
+    @override
+    Widget build(BuildContext context) {
+        final request = context.watch<CookieRequest>();
+        return Scaffold(
+            appBar: AppBar(
+                title: const Text('Login'),
+            ),
+            body: Container(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                        TextField(
+                            controller: _usernameController,
+                            decoration: const InputDecoration(
+                                labelText: 'Username',
+                            ),
+                        ),
+                        const SizedBox(height: 12.0),
+                        TextField(
+                            controller: _passwordController,
+                            decoration: const InputDecoration(
+                                labelText: 'Password',
+                            ),
+                            obscureText: true,
+                        ),
+                        const SizedBox(height: 24.0),
+                        ElevatedButton(
+                            onPressed: () async {
+                                String username = _usernameController.text;
+                                String password = _passwordController.text;
+                                final response = await request.login("https://farah-aura-tugas.pbp.cs.ui.ac.id/auth/login/", {
+                                'username': username, 
+                                'password': password,
+                                });
+                    
+                                if (request.loggedIn) {
+                                    String message = response['message'];
+                                    String uname = response['username'];
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => MyHomePage()),
+                                    );
+                                    ScaffoldMessenger.of(context)
+                                        ..hideCurrentSnackBar()
+                                        ..showSnackBar(
+                                            SnackBar(content: Text("$message Selamat datang, $uname.")));
+                                    } else {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                            title: const Text('Login Gagal'),
+                                            content:
+                                                Text(response['message']),
+                                            actions: [
+                                                TextButton(
+                                                    child: const Text('OK'),
+                                                    onPressed: () {
+                                                        Navigator.pop(context);
+                                                    },
+                                                ),
+                                            ],
+                                        ),
+                                    );
+                                }
+                            },
+                            child: const Text('Login'),
+                        ),
+                    ],
+                ),
+            ),
+        );
+    }
+}
+```
+
+Terakhir, di file main.dart, pada Widget MaterialApp(...), saya mengubah `home: MyHomePage()` menjadi `home: LoginPage()`
+
+<h2>Membuat model kustom sesuai dengan proyek aplikasi Django.</h2>
+
+Dalam membuat model yang menyesuaikan dengan data JSON, saya menggunakan website Quicktype. Pertama, saya mengubah setup name menjadi Item, source type menjadi JSON, dan language menjadi Dart pada website Quickype. Kemudian, saya membuka endpoint JSON yang sudah saya buat sebelumnya, lalu copy data JSON dan paste ke dalam textbox yang tersedia pada Quicktype. Selanjutnya, saya pilih `Copy Code` dan paste di file baru yang saya buat pada folder `lib/models` dengan nama `item.dart`
+
+<h2>Membuat halaman yang berisi daftar semua item yang terdapat pada endpoint JSON di Django yang telah di deploy dan menampilkan name, amount, dan description dari masing-masing item pada halaman ini.</h2>
+
+Pertama, saya menjalankan `flutter pub add http` pada terminal proyek Flutter untuk menambahkan package http. Kemudian, pada file 	`android/app/src/main/AndroidManifest.xml`, saya menambahkan kode `<uses-permission android:name="android.permission.INTERNET" />` di bawah `</application>` untuk memperbolehkan akses Internet pada aplikasi Flutter yang sedang dibuat. Lalu, saya melakukan Fetch Data dari Django dengan membuat file baru pada folder `lib/screens` dengan nama `list_item.dart`. Kemudian, isi file  tersebut dengan kode berikut.
+
+```dart
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
+import 'package:mini_cinema/models/item.dart';
+import 'package:mini_cinema/widgets/left_drawer.dart';
+import 'package:mini_cinema/screens/detail_item.dart';
+
+class ItemPage extends StatefulWidget {
+    const ItemPage({Key? key}) : super(key: key);
+
+    @override
+    _ItemPageState createState() => _ItemPageState();
+}
+
+class _ItemPageState extends State<ItemPage> {
+Future<List<Item>> fetchItem() async {
+    var url = Uri.parse(
+        'https://farah-aura-tugas.pbp.cs.ui.ac.id/json/');
+    var response = await http.get(
+        url,
+        headers: {"Content-Type": "application/json"},
+    );
+
+    var data = jsonDecode(utf8.decode(response.bodyBytes));
+    
+    List<Item> list_item = [];
+    for (var d in data) {
+        if (d != null) {
+            list_item.add(Item.fromJson(d));
+        }
+    }
+    return list_item;
+}
+
+@override
+Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Item'),
+          backgroundColor: const Color.fromARGB(255, 170, 71, 68),
+          foregroundColor: Colors.white,
+        ),
+        drawer: const LeftDrawer(),
+        body: FutureBuilder(
+            future: fetchItem(),
+            builder: (context, AsyncSnapshot snapshot) {
+                if (snapshot.data == null) {
+                    return const Center(child: CircularProgressIndicator());
+                } else {
+                    if (!snapshot.hasData) {
+                    return const Column(
+                        children: [
+                        Text(
+                            "No data item.",
+                            style:
+                                TextStyle(color: Color(0xff59A5D8), fontSize: 20),
+                        ),
+                        SizedBox(height: 8),
+                        ],
+                    );
+                } else {
+                  return ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (_, index) => GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailItemPage(
+                              item: snapshot.data![index],
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 12),
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "${snapshot.data![index].fields.name}",
+                              style: const TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            // const SizedBox(height: 10),
+                            // Text("${snapshot.data![index].fields.price}"),
+                            // const SizedBox(height: 10),
+                            // Text("${snapshot.data![index].fields.description}")
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }
+              }
+            }
+	)
+	);
+  }
+}
+```
+
+<h2>Membuat Halaman Detail Item, diakses dengan menekan salah satu item pada halaman daftar Item dan tampilkan seluruh atribut pada model item</h2>
+
+Saya membuat file baru dengan nama `detail_item.dart` dan isi file tersebut dengan kode berikut.
+```dart
+import 'package:flutter/material.dart';
+import 'package:mini_cinema/models/item.dart';
+
+class DetailItemPage extends StatelessWidget {
+    final Item item;
+
+    const DetailItemPage({Key? key, required this.item}) : super(key: key);
+
+    @override
+    Widget build(BuildContext context) {
+        return Scaffold(
+            appBar: AppBar(
+                title: Text(item.fields.name),
+                backgroundColor: const Color.fromARGB(255, 170, 71, 68),
+                foregroundColor: Colors.white,
+            ),
+            body: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                        Text(
+                            item.fields.name,
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                            ),
+                        ),
+                        SizedBox(height: 20),
+                        Text('Amount: ${item.fields.amount}'),
+                        SizedBox(height: 20),
+                        Text('Price: ${item.fields.price}'),
+                        SizedBox(height: 20),
+                        Text('Description: ${item.fields.description}'),
+                    ],
+                ),
+            ),
+            floatingActionButton: FloatingActionButton(
+              backgroundColor: const Color.fromARGB(255, 170, 71, 68),
+              foregroundColor: Colors.white,
+                onPressed: () {
+                    Navigator.pop(context);
+                },
+                child: Icon(Icons.arrow_back),
+            ),
+        );
+    }
+}
+```
+
+Kemudian, saya menambahkan routing dengan kode berikut pada file `list_item.dart`
+```dart
+itemBuilder: (_, index) => GestureDetector(
+      onTap: () {
+	Navigator.push(
+	  context,
+	  MaterialPageRoute(
+	    builder: (context) => DetailItemPage(
+	      item: snapshot.data![index],
+	    ),
+	  ),
+	);
+      },
+```
+
+<h2>Tambahkan tombol untuk kembali ke halaman daftar item.</h2>
+Untuk menambahkan tombol kembali, saya menambahkan kode berikut.
+
+```dart
+floatingActionButton: FloatingActionButton(
+      backgroundColor: const Color.fromARGB(255, 170, 71, 68),
+      foregroundColor: Colors.white,
+	onPressed: () {
+	    Navigator.pop(context);
+	},
+	child: Icon(Icons.arrow_back),
+    ),
+```
+
+</details>
